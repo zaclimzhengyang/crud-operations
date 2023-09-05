@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace crud_operations.Controllers;
 
+[Route("api/[controller]/[action]")]
 public class EmployeesController : Controller
 {
     private readonly MvcDbContext mvcDbContext;
