@@ -4,15 +4,17 @@
 }
 
 <h1>Add Employee</h1>
-<form method="post" action="Add" class="mt-5">
+<form method="post" action="Add" class="mt-5" id="addEmployeeForm">
     <div class="mb-3">
         <label for="name" class="form-label">Name</label>
         <input type="text" class="form-control" asp-for="Name">
+        <span asp-validation-for="Name" class="text-danger"></span>
     </div>
     
     <div class="mb-3">
         <label for="email" class="form-label">Email</label>
         <input type="email" class="form-control" asp-for="Email">
+        <span asp-validation-for="Email" class="text-danger"></span>
     </div>
     
     <div class="mb-3">
@@ -23,12 +25,33 @@
     <div class="mb-3">
         <label for="dateOfBirth" class="form-label">Date Of Birth</label>
         <input type="date" class="form-control" asp-for="DateOfBirth">
+        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
     </div>
     
     <div class="mb-3">
         <label for="department" class="form-label">Department</label>
         <input type="text" class="form-control" asp-for="Department">
+        <span asp-validation-for="Department" class="text-danger"></span>
     </div>
    
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#addEmployeeForm").submit(function (event) {
+            // Check each input field for empty values
+            var emptyFields = $(this).find("input[type=text], input[type=email], input[type=number], input[type=date]").filter(function () {
+                return !this.value;
+            });
+
+            // If there are empty fields, prevent form submission and display an alert
+            if (emptyFields.length > 0) {
+                alert("Please fill in all required fields.");
+                event.preventDefault(); // Prevent form submission
+            }
+        });
+    });
+</script>
