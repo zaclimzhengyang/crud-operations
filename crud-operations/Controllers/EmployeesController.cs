@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace crud_operations.Controllers;
 
-[Route("api/[controller]/[action]")]
+// [Route("api/[controller]/[action]")]
 public class EmployeesController : Controller
 {
     private readonly MvcDbContext mvcDbContext;
@@ -23,6 +23,13 @@ public class EmployeesController : Controller
     {
         var employees = await mvcDbContext.Employees.ToListAsync();
         return View(employees);
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> ListJson()
+    {
+        var employees = await mvcDbContext.Employees.ToListAsync();
+        return Json(employees);
     }
     
     
