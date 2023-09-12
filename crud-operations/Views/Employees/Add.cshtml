@@ -6,8 +6,8 @@
 <h1>Add Employee</h1>
 <form method="post" action="Add" class="mt-5" id="addEmployeeForm">
     <div class="mb-3">
-        <label for="name" class="form-label">Name</label>
-        <input type="text" class="form-control" asp-for="Name">
+        <label asp-for="Name" class="form-label">Name</label>
+        <input asp-for="Name" type="text" class="form-control">
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
     
